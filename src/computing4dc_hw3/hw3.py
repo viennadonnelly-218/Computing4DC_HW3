@@ -12,6 +12,18 @@
 # where <light> is the value of the parameter light.
 #
 
+def car_at_light(light):
+    if light.casefold() == "red":
+        return "stop"
+    elif light.casefold() == "green":
+        return "go"
+    elif light.casefold() == "yellow":
+        return "wait"
+    else:
+        return "Undefined instruction for color: " + str(light)
+# test car_at_light    
+print(car_at_light("RED"))
+
 # 2)
 # Create a function named "safe_subtract" that
 # takes two parameters and returns the result of
@@ -20,6 +32,18 @@
 # it returns None.
 # If there is any other reason why it fails show the problem 
 # 
+
+def safe_subtract(a, b):
+    try:
+        return a - b
+    except TypeError:
+        return None
+    except Exception as error:
+        return f"Error: {error}"
+    
+# Test safe_subtract   
+print(safe_subtract(3,1))
+
 
 # 3)
 # Imagine you have a dictionary with the attributes of a person
@@ -42,25 +66,30 @@
 # Find the possible logical errors (bugs) 
 # in the code blocks below. Comment in each of them
 # which logical errors did you find and correct them
+
 ### (a)
+# The code block seems to be interested in the "Double sum" but the variable elem is being added to "total_double_sum" instead of the variable "double"
+
 total_double_sum = 0
 for elem in [10, 5, 2]:
     double = elem * 2
-    total_double_sum += elem
+    total_double_sum += double
 
 ### (b)
+# In the original version strings is being reassigned to the value of string + string, i.e., "I I" when it should append each new string onto the variable "strings"
 strings = ''
 for string in ['I', 'am', 'Groot']:
-    strings = string+"_"+string
+    strings = strings+"_"+string
 
 ### (c) Careful!
+#J will always be >0 so this while loop will never end.
 j=10
 while j > 0:
-   j += 1
+   j -= 1
 
 ### (d)
-productory = 0
+#Since we are working with multiplication, the initialized value for productory should be 1. If it is zero, the product will always be 0
+productory = 1
 for elem in [1, 5, 25]:
     productory *= elem
-
 
